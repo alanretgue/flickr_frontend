@@ -8,10 +8,17 @@
 <label for="list_display_checkbox"> Display in list</label>
 
 <br>
+<br>
+<br>
 
-<div *ngIf="list_display == true; else other">
-    <img *ngFor="let c of photos.photo" src="https://live.staticflickr.com/{{c.server}}/{{c.id}}_{{c.secret}}.jpg">
+<div *ngIf="list_display == true; else other" class="image_container">
+    <div *ngFor="let c of photos.photo" class="cont_img">
+        <img 
+        src="https://live.staticflickr.com/{{c.server}}/{{c.id}}_{{c.secret}}.jpg"
+        class="listed_image">
+    </div>
 </div>
-<ng-template #other>
-    <img src="https://live.staticflickr.com/{{photos.photo[0].server}}/{{photos.photo[0].id}}_{{photos.photo[0].secret}}.jpg">
+<ng-template #other class="slider_componenet_container">
+    <app-slider [nb_image]="nb_image"
+                [photos]="photos.photo"></app-slider>
 </ng-template>

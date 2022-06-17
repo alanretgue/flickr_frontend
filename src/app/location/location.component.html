@@ -1,0 +1,10 @@
+<div *ngIf="photoLocation.stat == 'fail'; else other">
+    <p>Latitude: {{photoLocation.location?.latitude}}</p>
+    <p>Longitude: {{photoLocation.location?.longitude}}</p>
+    <p>Id: {{photoLocation.id}}</p>
+    <p>Id: {{this.id}}</p>
+</div>
+<ng-template #other>
+    <p>location failed</p>
+    <p>Id: {{this.id}}</p>
+</ng-template>

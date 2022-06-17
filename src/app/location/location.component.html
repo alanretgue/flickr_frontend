@@ -1,10 +1,8 @@
-<div *ngIf="photoLocation.stat == 'fail'; else other">
-    <p>Latitude: {{photoLocation.location?.latitude}}</p>
-    <p>Longitude: {{photoLocation.location?.longitude}}</p>
-    <p>Id: {{photoLocation.id}}</p>
-    <p>Id: {{this.id}}</p>
+<div *ngIf="requestLocation.stat === 'ok'; else other">
+    <p>Latitude: {{requestLocation.photo.location?.latitude}}</p>
+    <p>Longitude: {{requestLocation.photo.location?.longitude}}</p>
 </div>
 <ng-template #other>
-    <p>location failed</p>
+    <p>location not specified</p>
     <p>Id: {{this.id}}</p>
 </ng-template>

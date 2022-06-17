@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { RequestService } from '../request.service';
+
+import { HttpErrorResponse } from '@angular/common/http';
+import { Comments, Comment, RequestCommentsApi } from '../request-api-interface';
 
 @Component({
   selector: 'app-comments',
@@ -7,9 +11,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor() { }
+  @Input() id = "";
+
+  comments: Comments = {
+    photo_id: "",
+    comment: []
+  };
+
+  commentApi: RequestCommentsApi = {
+    comments: this.comments,
+    stat: ""
+  }
+
+  getComments() {
+    this.Request
+        .getComments(this.id)
+        .subscribe((data: RequestCommentsApi) => {
+          this.commentApi = this.commentApi;
+          //this.Request.totalColors.next(this.photos.length);
+        },
+          (err: HttpErrorResponse) => {
+            if (err.error instanceof Error) {
+              console.log('[getComments] Client-side error occured.');
+            } else {
+              console.log('[getComments] Server-side error occured.');
+            }
+          });
+  }
+
+  constructor(private Request: RequestService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.id = changes['id'].currentValue;
+    if (!changes['id'].isFirstChange) {
+      this.getComments();
+    }
   }
 
 }

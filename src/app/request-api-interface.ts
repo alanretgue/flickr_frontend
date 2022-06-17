@@ -41,13 +41,13 @@ export interface Location {
 export interface PhotoLocation {
     id?: string;
     location?: Location;
-    stat : string;
     code?: number;
     message?: string;
 }
 
 export interface RequestLocationApi {
-    location: PhotoLocation;
+    photo: PhotoLocation;
+    stat : string;
 }
 
 export interface Comment {

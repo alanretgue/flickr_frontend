@@ -50,8 +50,12 @@ export class LocationComponent implements OnInit, OnChanges {
   photoLocation: PhotoLocation = {
     id: '',
     location: this.location,
-    stat: ""
   };
+
+  requestLocation: RequestLocationApi = {
+    photo: this.photoLocation,
+    stat: ""
+  }
 
   constructor(private Request: RequestService) { }
 
@@ -59,7 +63,7 @@ export class LocationComponent implements OnInit, OnChanges {
     this.Request
         .getLocation(this.id)
         .subscribe((data: RequestLocationApi) => {
-          this.photoLocation = data.location;
+          this.requestLocation = data;
           //this.Request.totalColors.next(this.photos.length);
         },
           (err: HttpErrorResponse) => {
@@ -76,8 +80,11 @@ export class LocationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.id = changes['id'].currentValue;
+    console.log(this.requestLocation.stat);
+    this.getLocation();
     if (!changes['id'].isFirstChange) {
       this.getLocation();
+      console.log(this.requestLocation.stat);
     }
   }
 }

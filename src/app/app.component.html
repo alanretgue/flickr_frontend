@@ -1,4 +1,4 @@
-<h1>Flicker</h1>
+<h1>Flickr</h1>
 
 <input type="text" [(ngModel)]="tags_tmp" />
 <button (click)="setTags()"> Search </button>
@@ -8,14 +8,27 @@
 <label for="list_display_checkbox"> Display in list</label>
 
 <br>
+<input type="checkbox" [(ngModel)]="NSFW" name="NSFW"/>
+<label for="NSFW"> NSFW</label>
+
+<br>
+
+<button (click)="tags_tmp === '' ? ngOnInit() : setTags()"> Filter</button>
+
+<br>
 <br>
 <br>
 
 <div *ngIf="list_display == true; else other" class="image_container">
-    <div *ngFor="let c of photos.photo" class="cont_img">
-        <img 
-        src="https://live.staticflickr.com/{{c.server}}/{{c.id}}_{{c.secret}}.jpg"
-        class="listed_image">
+    <div *ngFor="let i of photos.photo.keys()" class="cont_img">
+        <div (click)="toggle_info(i)">
+            <img src="https://live.staticflickr.com/{{photos.photo[i].server}}/{{photos.photo[i].id}}_{{photos.photo[i].secret}}.jpg"
+            class="listed_image">
+            <div *ngIf="photos.photo[i].display_info">
+                <app-location [id]=photos.photo[i].id></app-location>
+                <app-comments [id]=photos.photo[i].id></app-comments>
+            </div>
+        </div>
     </div>
 </div>
 <ng-template #other class="slider_componenet_container">

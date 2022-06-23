@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   tags_tmp = "";
 
   list_display = false;
+  NSFW = false;
 
   photos: PhotosObj = {
     page: 0,
@@ -25,6 +26,9 @@ export class AppComponent implements OnInit {
     photo: []
   };
 
+  toggle_info(id: number) {
+    this.photos.photo[id].display_info = !this.photos.photo[id].display_info;
+  }
   
   nb_image = 0;
 
@@ -33,10 +37,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.tags = this.tags_tmp;
     this.Request
-        .getRecent()
+        .getRecent(this.NSFW)
         .subscribe((data: RequestApi) => {
           this.photos = data.photos;
           this.nb_image = this.photos.photo.length;
+          this.photos.photo.forEach((x) => x.display_info = false);
           //this.Request.totalColors.next(this.photos.length);
         },
         (err: HttpErrorResponse) => {
@@ -51,10 +56,11 @@ export class AppComponent implements OnInit {
   setTags() {
     this.tags = this.tags_tmp;
     this.Request
-        .getSearchedImages(this.tags)
+        .getSearchedImages(this.tags, this.NSFW)
         .subscribe((data: RequestApi) => {
           this.photos = data.photos;
           this.nb_image = this.photos.photo.length;
+          this.photos.photo.forEach((x) => x.display_info = false);
           //this.Request.totalColors.next(this.photos.length);
         },
         (err: HttpErrorResponse) => {

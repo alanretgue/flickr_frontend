@@ -27,7 +27,7 @@ export class CommentsComponent implements OnInit {
     this.Request
         .getComments(this.id)
         .subscribe((data: RequestCommentsApi) => {
-          this.commentApi = this.commentApi;
+          this.commentApi = data;
           //this.Request.totalColors.next(this.photos.length);
         },
           (err: HttpErrorResponse) => {
@@ -46,6 +46,7 @@ export class CommentsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     this.id = changes['id'].currentValue;
+    this.getComments();
     if (!changes['id'].isFirstChange) {
       this.getComments();
     }

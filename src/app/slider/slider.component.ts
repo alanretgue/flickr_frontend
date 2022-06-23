@@ -13,6 +13,12 @@ export class SliderComponent implements OnInit {
 
   @Input() photos: PhotoInfo[] = [];
 
+  display_info = false;
+
+  toggle_info() {
+    this.display_info = !this.display_info;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

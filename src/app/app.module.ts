@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { SliderComponent } from './slider/slider.component';
 import { CommentsComponent } from './comments/comments.component';
 import { LocationComponent } from './location/location.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SliderComponent,
     CommentsComponent,
-    LocationComponent
+    LocationComponent,
+    GallerieComponent
   ],
   imports: [
     BrowserModule,

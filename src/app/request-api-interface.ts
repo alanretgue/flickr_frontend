@@ -7,6 +7,7 @@ export interface PhotoInfo {
     title: string;
     ispublic: number;
     isfamily: number;
+    display_info: boolean;
 }
 
 export interface PhotosObj {
@@ -71,4 +72,44 @@ export interface Comments {
 export interface RequestCommentsApi {
     comments: Comments;
     stat: string;
+}
+
+export interface Content {
+    _content: string
+}
+
+export interface Gallerie { 
+    id: string;
+    gallery_id: string;
+    url: string;
+    owner: string;
+    username: string;
+    iconserver: string;
+    iconfarm: Number;
+    primary_photo_id: string;
+    date_create: string;
+    date_update: string;
+    count_photos: Number;
+    count_videos: Number;
+    count_total: Number;
+    count_views: Number;
+    count_comments: Number;
+    title: Content;
+    description: Content;
+    sort_group: string;
+    primary_photo_server: string;
+    primary_photo_farm: Number;
+    primary_photo_secret: string
+}
+
+export interface Galleries {
+    total: Number;
+    per_page: Number;
+    user_id: string;
+    continuation: Number
+    gallery: Gallerie[]
+}
+export interface RequestGalleryListApi {
+    galleries: Galleries;
+    stat: string
 }

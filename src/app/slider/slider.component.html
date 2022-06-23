@@ -1,18 +1,20 @@
 <div class="slider_container">
     <button (click)="prevImg()" class="slider_btn">  <-  </button>
     <!--<p>{{num_image}} / {{nb_image}}</p>-->
-    <div class="img_with_title">
+    <div class="img_with_title" (click)="toggle_info()" >
         <img src="https://live.staticflickr.com/{{photos[num_image].server}}/{{photos[num_image].id}}_{{photos[num_image].secret}}.jpg"
             class="slided_image">
         <p class="img_title">{{photos[num_image].title}}</p>
     </div>
     <button (click)="nextImg()" class="slider_btn">  ->  </button>
 </div>
+<div *ngIf="display_info">
+    <div>
+        <app-location [id]=photos[num_image].id></app-location>
+    </div>
+    <div>
+        <app-comments [id]=photos[num_image].id></app-comments>
+    </div>
 
-<div>
-    <app-location [id]=photos[num_image].id></app-location>
-</div>
-
-<div>
-    <app-comments [id]=photos[num_image].id></app-comments>
+    <app-gallerie [id]=photos[num_image].owner></app-gallerie>
 </div>

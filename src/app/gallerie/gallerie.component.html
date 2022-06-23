@@ -1,0 +1,8 @@
+<button (click)="getGallerie()"> Gallery </button>
+
+<div *ngIf="showGalleryListApi">
+    Galleries:
+    <div *ngFor="let gal of galleriesApi.galleries.gallery">
+        <p style="margin-left: 1%;">{{gal.title._content}}: {{gal.count_views}} views</p>
+    </div>
+</div>

@@ -9,7 +9,7 @@ import { Comments, Comment, RequestCommentsApi } from '../request-api-interface'
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnChanges {
 
   @Input() id = "";
 

@@ -9,6 +9,7 @@
     <button (click)="nextImg()" class="slider_btn">  ->  </button>
 </div>
 <div *ngIf="display_info">
+    <app-profile [id]=photos[num_image].owner></app-profile>
     <div>
         <app-location [id]=photos[num_image].id></app-location>
     </div>

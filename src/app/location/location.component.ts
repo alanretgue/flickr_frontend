@@ -80,11 +80,11 @@ export class LocationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.id = changes['id'].currentValue;
-    console.log(this.requestLocation.stat);
+    // console.log(this.requestLocation.stat);
     this.getLocation();
     if (!changes['id'].isFirstChange) {
       this.getLocation();
-      console.log(this.requestLocation.stat);
+      // console.log(this.requestLocation.stat);
     }
   }
 }

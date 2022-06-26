@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-import { RequestApi, RequestLocationApi , RequestCommentsApi, RequestGalleryListApi } from './request-api-interface';
+import { RequestApi,
+  RequestLocationApi,
+  RequestCommentsApi,
+  RequestGalleryListApi,
+  RequestProfileApi } from './request-api-interface';
 
 
 @Injectable({
@@ -39,5 +43,9 @@ export class RequestService {
 
   getGallerieList(id: string): Observable<RequestGalleryListApi> { 
     return this.http.get<RequestGalleryListApi>('https://www.flickr.com/services/rest/?method=flickr.galleries.getList&api_key=' + this.key_api + '&user_id=' + id + '&per_page=499&continuation=0&short_limit=1&format=json&nojsoncallback=1');
+  }
+
+  getProfile(id: string): Observable<RequestProfileApi> { 
+    return this.http.get<RequestProfileApi>('https://www.flickr.com/services/rest/?method=flickr.profile.getProfile&api_key=' + this.key_api + '&user_id=' + id + '&per_page=499&format=json&nojsoncallback=1');
   }
 }

@@ -113,3 +113,29 @@ export interface RequestGalleryListApi {
     galleries: Galleries;
     stat: string
 }
+
+export interface Profile {
+    id: string;
+    nsid: string;
+    join_date: string;
+    occupation: string;
+    hometown: string;
+    showcase_set: string;
+    showcase_set_title: string;
+    first_name: string;
+    last_name: string;
+    profile_description: string;
+    website: string;
+    city: string;
+    country: string;
+    facebook: string;
+    twitter: string;
+    tumblr: string;
+    instagram: string;
+    pinterest: string
+}
+
+export interface RequestProfileApi { 
+    profile: Profile;
+    stat: string 
+}

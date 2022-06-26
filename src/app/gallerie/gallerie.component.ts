@@ -31,6 +31,7 @@ export class GallerieComponent implements OnInit {
   }
 
   getGallerie() {
+    if (this.galleriesApi.stat === "") {
     this.Request
         .getGallerieList(this.id)
         .subscribe((data: RequestGalleryListApi) => {
@@ -43,8 +44,13 @@ export class GallerieComponent implements OnInit {
               console.log('[getGallerieList] Server-side error occured.');
             }
           });
+    }
 
-    this.showGalleryListApi = true;
+    this.showGalleryListApi = !this.showGalleryListApi;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.showGalleryListApi = false;
   }
 
   ngOnInit(): void {

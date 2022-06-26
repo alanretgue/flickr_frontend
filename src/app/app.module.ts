@@ -10,6 +10,7 @@ import { SliderComponent } from './slider/slider.component';
 import { CommentsComponent } from './comments/comments.component';
 import { LocationComponent } from './location/location.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GallerieComponent } from './gallerie/gallerie.component';
     SliderComponent,
     CommentsComponent,
     LocationComponent,
-    GallerieComponent
+    GallerieComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

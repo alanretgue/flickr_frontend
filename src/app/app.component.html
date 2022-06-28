@@ -24,7 +24,8 @@
         <div (click)="toggle_info(i)">
             <img src="https://live.staticflickr.com/{{photos.photo[i].server}}/{{photos.photo[i].id}}_{{photos.photo[i].secret}}.jpg"
             class="listed_image">
-            <div *ngIf="photos.photo[i].display_info">
+            <div *ngIf="photos.photo[i].display_info" class="info_image">
+                <app-profile [id]=photos.photo[i].owner></app-profile>
                 <app-location [id]=photos.photo[i].id></app-location>
                 <app-comments [id]=photos.photo[i].id></app-comments>
             </div>

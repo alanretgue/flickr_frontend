@@ -12,18 +12,30 @@ body {
 .image_container{
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    /* flex-wrap: wrap;
+    justify-content: space-between;*/
 }
 
 .cont_img{
     margin: 1%;
-    height: 100%;
+    padding: 1%;
+    height: auto;
+    width: 60%;
+}
+
+.info_image {
+    width: 90%;
+    align-items: center;
+    margin: auto;
+    margin-top: 1%;
 }
 
 .listed_image{
     position: relative;
+    width: 100%;
+    height: auto;
     padding: 3%;
     background-color: gray;
     vertical-align: middle;
